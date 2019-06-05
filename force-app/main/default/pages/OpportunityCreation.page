@@ -1,0 +1,16 @@
+<apex:page standardController="Opportunity" extensions="OpportunityCreationController">
+	<apex:pageMessages/>
+	<apex:form>
+	<apex:pageBlock title="New Opportunity">
+		<apex:pageBlockButtons>
+			<apex:commandButton action="{!save}" value="Saverrr"/>
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection columns="1">
+			<apex:inputField value="{!Opportunity.AccountId}"/>
+			<apex:inputField value="{!role.ContactId}"/>
+			<apex:inputField value="{!Opportunity.Amount}"/>
+			<apex:inputField value="{!Opportunity.CloseDate}"/>
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+	</apex:form>
+</apex:page>
