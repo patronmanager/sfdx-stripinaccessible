@@ -14,6 +14,7 @@ public with sharing class OpportunityCreationController {
             Opportunity.SObjectType,
             OpportunityContactRole.SObjectType
         }
+        //Comment this out for a working example
         , new MyDML()
         );
 
@@ -37,20 +38,16 @@ public with sharing class OpportunityCreationController {
 
     private class MyDML implements fflib_SObjectUnitOfWork.IDML
     {
-        List<SObject> sanitize(List<SObject> objList){
+        public void dmlInsert(List<SObject> objList){
             SObjectAccessDecision decision = Security.stripInaccessible(
                 AccessType.CREATABLE,
                 objList
             );
 
-            return decision.getRecords();
-        }
-
-        public void dmlInsert(List<SObject> objList){
-            //This is the problem .... 
-            objList = sanitize(objList);
-            System.debug('in dmlInsert: ' + objList);
-            insert objList;
+            //This is the problem .... these are copies of the originals
+            List<SObject> cleanRecords = decision.getRecords();
+            System.debug('in dmlInsert: ' + cleanRecords);
+            insert cleanRecords;
         }
         public void dmlUpdate(List<SObject> objList){
 
