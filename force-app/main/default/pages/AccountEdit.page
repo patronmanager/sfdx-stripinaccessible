@@ -1,0 +1,27 @@
+<apex:page standardController="Account" extensions="AccountEditController" lightningStylesheets="true">
+	<apex:sectionHeader title="{!acc.Name}">
+		<apex:outputLink value="{!URLFOR($Action.Account.View,acc.Id)}">Back to Account View</apex:outputLink>
+	</apex:sectionHeader>
+	<apex:form>
+	<apex:pageMessages/>
+	<apex:pageBlock title="Account" rendered="{!mode == 'edit'}">
+		<apex:pageBlockButtons>
+			<apex:commandButton action="{!save}" value="Save"/>
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection columns="1">
+			<apex:inputField value="{!acc.Name}"/>
+			<apex:inputField value="{!acc.Importance__c}"/>
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+	<apex:pageBlock title="Account" rendered="{!mode == 'display'}">
+		<apex:pageBlockButtons>
+			<apex:commandButton action="{!edit}" value="Edit"/>
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection columns="1">
+			<apex:outputField value="{!acc.Name}"/>
+			<apex:outputField value="{!acc.Importance__c}"/>
+			<apex:outputField value="{!acc.Badge__c}"/>
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+	</apex:form>
+</apex:page>

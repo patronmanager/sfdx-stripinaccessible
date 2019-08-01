@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Badge__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(Importance__c,&#39;VIP&#39;),&#39;AWESOME SAUCE&#39;,IF(ISPICKVAL(Importance__c,&#39;Deadbeat&#39;),&#39;SAD TROMBONE&#39;,&#39;SATISFACTORY&#39;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Badge</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
