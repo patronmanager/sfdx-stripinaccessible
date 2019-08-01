@@ -21,14 +21,9 @@ public with sharing class AccountEditController{
 			new Account[]{acc}
 		);
 
-		ApexPages.getMessages().add(
-			new ApexPages.Message(ApexPages.Severity.WARNING,'Decision:' + decision.getRemovedFields())
-		);
-
 		acc = (Account)decision.getRecords()[0];
 
 		update acc;
-		
 
 		acc.recalculateFormulas();
 		mode = 'display';
